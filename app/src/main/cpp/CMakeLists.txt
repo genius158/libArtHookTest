@@ -18,6 +18,8 @@ add_library( # Sets the name of the library.
         SHARED
 
         # Provides a relative path to your source file(s).
+        Test.h
+        Test.cpp
         hookart.cpp
         xhook/xh_core.c
         xhook/xh_elf.c

@@ -2,6 +2,7 @@
 #include <string>
 #include "log.h"
 #include "xhook/xhook.h"
+#include "Test.h"
 
 static int (*thread_create)(pthread_t *thread_out, pthread_attr_t const *attr,
                             void *(*start_routine)(void *), void *arg);
@@ -31,4 +32,7 @@ Java_com_yan_arthooktest_HookArt_hook(JNIEnv *env, jobject thiz) {
 
     xhook_enable_debug(1);
     xhook_refresh(0);
+
+    Test().test();
 }
+
