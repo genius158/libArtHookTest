@@ -30,6 +30,21 @@ public:
     int m_c;
 };
 
+double cal_m1(int lines) {
+    return 0.05 * lines;
+}
+
+double cal_m2(int lines) {
+    return 0.5 * lines;
+}
+
+void estimate(int line_num, double (*pf)(int lines)) {
+    double result = (*pf)(line_num);
+    LOG("result estimate %f", result);
+
+}
+
+
 void Test::test() {
     Son temp;
     LOG("data d %d", temp.m_b);
@@ -54,4 +69,34 @@ void Test::test() {
     *(int *) (data + sizeof(int) * 2) = 3;
     *(int *) (data + sizeof(int) * 3) = 4;
     LOG("------------- %d\t%d\n", *(int *) data, *(int *) (data + sizeof(int) * 3));
+
+    ////////////////////////////////////////////////////////////////////////////////
+    int a = 12;
+    int b;
+    int *p;
+    int **ptr;
+    p = &a; //&a 的结果是一个指针，类型是int*，指向的类型是
+//int，指向的地址是a 的地址。
+    *p = 24; //*p 的结果，在这里它的类型是int，它所占用的地址是
+//p 所指向的地址，显然，*p 就是变量a。
+    ptr = &p; //&p 的结果是个指针，该指针的类型是p 的类型加个*，
+//在这里是int **。该指针所指向的类型是p 的类型，这
+//里是int*。该指针所指向的地址就是指针p 自己的地址。
+    *ptr = &b; //*ptr 是个指针，&b 的结果也是个指针，且这两个指针
+//的类型和所指向的类型是一样的，所以用&b 来给*ptr 赋
+//值就是毫无问题的了。
+    **ptr = 34; //*ptr 的结果是ptr 所指向的东西，在这里是一个指针，
+//对这个指针再做一次*运算，结果是一个int 类型的变量。
+
+    estimate(23, cal_m1);
+
+//    double cal_m2(int lines) {
+
+    double (*fp)(int lines) = cal_m2;
+
+    double result = (*fp)(20);
+
+    LOG("result  %f", result);
+
+
 }
