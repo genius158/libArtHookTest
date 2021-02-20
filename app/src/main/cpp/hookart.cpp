@@ -34,5 +34,13 @@ Java_com_yan_arthooktest_HookArt_hook(JNIEnv *env, jobject thiz) {
     xhook_refresh(0);
 
     Test().test();
+
+    // 打印 java 堆栈
+    jclass throwable = env->FindClass("java/lang/Throwable");
+    jmethodID init = env->GetMethodID(throwable, "<init>", "()V");
+    jobject newObject = env->NewObject(throwable, init);
+//    Throwable().printStackTrace()
+    jmethodID printStackTrace = env->GetMethodID(throwable, "printStackTrace", "()V");
+    env->CallVoidMethod(newObject, printStackTrace);
 }
 

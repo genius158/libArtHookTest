@@ -113,4 +113,22 @@ void Test::test() {
 
     LOG("Swap after  %d   %d", swapA, swapB);
 
+
+    int i;
+    float f = 166.71;
+    // 关联性的数据转换 包括 继承
+    i = static_cast<int>(f);
+    LOG("static_cast  %d ", i);
+
+    auto tf = static_cast<float>(i);
+    LOG("static_cast  %f ", tf);
+
+    int *i2;
+    char *f2 = "sdf";
+    // 可处理非关联性的转换
+    i2 = reinterpret_cast<int *>(f2);
+    LOG("reinterpret_cast  %d ", *i2);
+    char *f3 = reinterpret_cast<char *>(i2);
+    LOG("reinterpret_cast  %s ", f3);
+
 }
