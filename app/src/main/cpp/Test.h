@@ -5,7 +5,7 @@
 #ifndef HOOTTEST_TEST_H
 #define HOOTTEST_TEST_H
 
-#define CallM1 false
+#define CallM1 true
 
 class Test {
 
