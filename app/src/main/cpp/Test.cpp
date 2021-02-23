@@ -1,3 +1,4 @@
+#include <elf.h>
 //
 // Created by yan xianwei on 2020/11/9.
 //
@@ -7,6 +8,7 @@
 #include "log.h"
 #include "Test.h"
 #include "log.h"
+
 
 
 class Parent {
@@ -30,9 +32,19 @@ public:
     int m_c;
 };
 
+
+#if(CallM1)
 double cal_m1(int lines) {
+      LOG("cal_m1 111111");
+  return 0.05 * lines;
+}
+#else
+double cal_m1(int lines) {
+    LOG("cal_m1 222222");
     return 0.05 * lines;
 }
+
+#endif
 
 double cal_m2(int lines) {
     return 0.5 * lines;
